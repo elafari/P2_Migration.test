@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+
+import { AngularFire } from 'angularfire2';
+
+import { ConfigService } from './shared/config.service';
+import { LogService } from "./shared/log.service";
 
 @Component({
-  selector: 'disease-diary-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: 'app.component.html'
 })
 export class AppComponent {
-  title = 'disease-diary works!';
+
+    constructor(private af: AngularFire,
+                private logService: LogService) {
+        this.logService.setLogActive(ConfigService.logFlag);
+    };
 }
