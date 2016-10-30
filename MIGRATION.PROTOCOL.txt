@@ -1,0 +1,48 @@
+---------------------------------------------
+Migration-Protocol (fbe14.devNav7 -> ng new)
+---------------------------------------------
+
+ng new disease-diary --prefix=disease-diary --style=scss
+
+Tests:
+npm list --depth=0
+ -> keine Fehler oder Warnings
+ng serve
+ -> läuft
+
+In package.json alle angular-versionen von ~2.1.0 auf ~2.0.0 gestellt (router von ~3.1.0 auf ~3.0.0
+npm install ausgeführt
+
+Tests:
+npm list --depth=0
+ -> mehrere UNMEET PEER DEPENDENCY wegen angular-cli (vorerst ignoriert)
+ng server
+ -> läuft
+
+
+Firebase
+--------
+npm i firebase -save
+npm i angularfire2 -save
+ -> UNMEET PEER DEPENDENCY @types/request@0.0.30
+npm i @types/request@0.0.30 -save-dev (genau diese Version)
+
+
+Bootstrap
+---------
+npm i bootstrap@next (Bootstrap4 mit JQuery und Tether als Dependency)
+npm i ng2-bootstrap (hat zwar Bootstrap3 als Dependency, läuft gemäss Doku aber auch mit Bootstrap4)
+
+In styles.scss:
+@import "../node_modules/bootstrap/scss/bootstrap-flex.scss";
+
+Custom-Styles verschoben in /src/assets/scss/toBeCleanedUp.scss
+
+
+Test-Migration (von Tonis fbe14.devNav7)
+--------------
+- App-Folder, favicon.ico, d-diary.png -> assets
+
+Hinweis:
+pull-right und pull-left wurden in Bootstrap 4 ersetzt: https://v4-alpha.getbootstrap.com/migration/
+Das Layout nach der Migration ist deswegen etwas 'verschossen'
